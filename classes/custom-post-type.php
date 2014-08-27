@@ -8,7 +8,7 @@
 		protected $labels;
 		protected $settings;
 
-		public function __construct() {
+		public function __construct($post_id_or_object = false) {
 			$this->labels = array(
 				'name'               => sprintf('%ss', $this::NAME),
 				'singular_name'      => sprintf('%s', $this::NAME),
@@ -39,15 +39,16 @@
 				'menu_position'      => null,
 				'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
 			);
-			parent::__construct();	
-			$this->register_post_type();
+			parent::__construct($post_id_or_object);
 		}
 
-		private function register_post_type() {
-			if (!post_type_exists( $this::CLASS_NAME )) {
-				$this->settings['labels'] = $this->labels;
-				register_post_type( $this::CLASS_NAME , $this->settings );
+		public static function register_post_type($instance) {
+			if (!post_type_exists( $instance::CLASS_NAME )) {
+				$instance->settings['labels'] = $instance->labels;
+				echo 'asdf' . $instance::CLASS_NAME;
+				register_post_type( $instance::CLASS_NAME , $instance->settings );
 			}
+			die();
 		}
 
 	}

@@ -6,7 +6,7 @@
 
         public $default_fields_names = array();
 
-        public function __construct( $post_id_or_object, $get_post_content = true, $field_names = false) {
+        public function __construct( $post_id_or_object = false, $get_post_content = true, $field_names = false) {
 
             // Extend Object
             if ($post_id_or_object) {

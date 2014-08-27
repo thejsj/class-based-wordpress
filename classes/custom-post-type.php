@@ -44,7 +44,7 @@
 		}
 
 		private function register_post_type() {
-			if (post_type_exists( $this::CLASS_NAME )) {
+			if (!post_type_exists( $this::CLASS_NAME )) {
 				$this->settings['labels'] = $this->labels;
 				register_post_type( $this::CLASS_NAME , $this->settings );
 			}

@@ -1,4 +1,4 @@
-<?php $view = new PageView(10); ?>
+<?php $view = new ImagePostView(get_the_ID()); ?>
 <?php get_header(); ?>
 
 	<div class="row">
